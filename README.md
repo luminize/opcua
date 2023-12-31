@@ -6,7 +6,7 @@ installation of 3rd party OPC-UA library
 cd open62541
 git submodule update --init --recursive
 
-thus pulls and updated the submodule
+this pulls and updated the submodule
 
 mkdir build
 
