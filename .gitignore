@@ -16,6 +16,13 @@
 *.dylib
 *.dll
 
+# ignore build artifacts
+build
+
+# ignore Visual Studio Code files
+.vscode
+
+
 # Fortran module files
 *.mod
 *.smod
