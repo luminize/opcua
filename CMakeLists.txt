@@ -21,9 +21,22 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project(server-instantiation VERSION 1.0)
 
-include_directories(${PROJECT_SOURCE_DIR})
+#target_sources(${PROJECT_NAME} ${PROJECT_SOURCE_DIR}/src/server-instantiation)
 include_directories(${PROJECT_SOURCE_DIR}/shared_62541)
 
-add_executable(${PROJECT_NAME} server-instantiation.c)
+add_executable(${PROJECT_NAME} ${PROJECT_SOURCE_DIR}/src/server-instantiation.c ${PROJECT_SOURCE_DIR}/shared_62541/open62541.h)
 
 target_link_libraries(${PROJECT_NAME} ${PROJECT_SOURCE_DIR}/shared_62541/open62541.lib)
+
+message("-- CMAKE_CURRENT_BINARY_DIR: ${CMAKE_CURRENT_BINARY_DIR}")
+
+# copy the (provided or generated) open62541 dll to the binary build location
+add_custom_target(copy_open62541_dll)
+add_custom_command(
+        TARGET copy_open62541_dll
+        COMMAND ${CMAKE_COMMAND} -E copy
+                ${CMAKE_SOURCE_DIR}/shared_62541/open62541.dll
+                ${CMAKE_CURRENT_BINARY_DIR}/Debug/open62541.dll
+        COMMENT "open62541.dll has been copied to output directory.")
+
+add_dependencies(${PROJECT_NAME} copy_open62541_dll)
