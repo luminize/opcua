@@ -16,13 +16,6 @@
 *.dylib
 *.dll
 
-# ignore build artifacts
-build
-
-# ignore Visual Studio Code files
-.vscode
-
-
 # Fortran module files
 *.mod
 *.smod
@@ -37,3 +30,15 @@ build
 *.exe
 *.out
 *.app
+
+# ignore build artifacts
+build
+
+# ignore Visual Studio Code files
+.vscode
+
+# ignore files in .godot demo directory
+demo/.godot
+
+# scons files
+.sconsign.dblite
