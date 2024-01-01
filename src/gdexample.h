@@ -12,6 +12,7 @@ private:
 	double time_passed;
 	double amplitude;
     double speed;
+    double time_emit;
 
 protected:
 	static void _bind_methods();
